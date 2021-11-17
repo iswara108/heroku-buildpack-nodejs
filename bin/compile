@@ -83,6 +83,12 @@ handle_failure() {
 }
 trap 'handle_failure' ERR
 
+function cat_npm_debug_log() {
+  cat /tmp/xfs-*/build.log
+}
+
+trap cat_npm_debug_log EXIT
+
 ### Initalize metadata store
 # Create the metadata store
 meta_init "$CACHE_DIR"
